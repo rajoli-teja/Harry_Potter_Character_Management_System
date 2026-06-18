@@ -11,15 +11,15 @@ const wandRoutes = require('./routes/wandsroutes');
 
 connectDB();
 
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.get("/", (req, res) => {
     res.json({
         message: "Harry Potter API Running"
     });
 });
-
-const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/characters', characterRoutes);
